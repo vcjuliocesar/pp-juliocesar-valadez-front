@@ -1,38 +1,49 @@
 <table class="table table-striped mt-4">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Phone</th>
       <th scope="col">Age</th>
       <th scope="col">Gender</th>
       <th scope="col">Created at</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>5533445566</td>
-      <td>18</td>
-      <th>Male</th>
-      <th>hoy</th>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>5533445566</td>
-      <td>18</td>
-      <th>Male</th>
-      <th>hoy</th>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>5533445566</td>
-      <td>18</td>
-      <th>Male</th>
-      <th>hoy</th>
+    <tr *ngFor="let user of users">
+      <td>{{ user.name }}</td>
+      <td>{{ user.phone }}</td>
+      <td>{{ user.age }}</td>
+      <th>{{ user.gender }}</th>
+      <th>{{ user.created_at | amDateFormat:'LL' }}</th>
+      <th>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" [attr.data-target]="'#modal' + user._id">
+          Delete
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="{{'modal'+user._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Do you want to delete {{user.name}} ?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteUser(user._id)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </th>
     </tr>
   </tbody>
 </table>

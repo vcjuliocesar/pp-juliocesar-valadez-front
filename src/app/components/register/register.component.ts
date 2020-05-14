@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
+import { UserListComponent} from '../user-list/user-list.component';
 
 @Component({
   selector: 'app-register',
@@ -9,6 +10,8 @@ import { UserService } from '../../services/user.service';
   providers: [UserService],
 })
 export class RegisterComponent implements OnInit {
+  //@ViewChild(UserListComponent) userlist: UserListComponent;
+
   public user: User;
   public status: string;
 
@@ -17,6 +20,8 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._userService.getUsers();
+    //this.userlist.allUsers();
     console.log(this._userService.prueba());
   }
 
@@ -25,6 +30,7 @@ export class RegisterComponent implements OnInit {
       response =>{
         if(response.user && response.user._id){
           this.status = "success";
+          this._userService.getUsers();
           form.reset();
         }else{
           this.status = "error";
