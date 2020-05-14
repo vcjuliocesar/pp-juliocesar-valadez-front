@@ -16,13 +16,12 @@ export class UserListComponent implements OnInit {
     this.allUsers();
   }
 
-  allUsers() {
-    this._userService.getUsers().subscribe(
+  allUsers(name = null) {
+    this._userService.getUsers(name).subscribe(
       (response) => {
         if (response.users) {
           this.users = response.users;
         }
-        //this.ngOnInit();
       },
       (error) => {
         console.log(error);

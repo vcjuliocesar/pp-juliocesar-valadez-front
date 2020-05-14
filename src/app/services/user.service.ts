@@ -18,7 +18,11 @@ export class UserService {
 
   getUsers(user = null): Observable<any> {
     let headers = new HttpHeaders().set('Content-type', 'application/json');
+    if(user){
+      return this._http.get(this.url + 'users/'+user, { headers: headers });
+    }
     return this._http.get(this.url + 'users/', { headers: headers });
+
   }
 
   delete(id): Observable<any> {

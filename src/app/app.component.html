@@ -1,20 +1,21 @@
-<div class="container" ng-app="myApp" ng-controller="myController">
-  <div class="card mt-4">
-    <div class="card-header">Form</div>
-    <div class="card-body">
-      <app-register></app-register>
-    </div>
-  </div>
-
-  <div class="card mt-4">
+<div class="container">
+  <h1>Users</h1>
+  <div class="card mb-4">
     <div class="card-header">
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      <button type="button" class="btn btn-success mt-4" data-toggle="modal" data-target="#exampleModal">
+        Add user
+      </button>
     </div>
     <div class="card-body">
-      <router-outlet></router-outlet>
+      <form class="form-inline my-2 my-lg-0" #seachForm="ngForm">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" (keyup.enter)="onEnter($event)" name="searchUser" #searchUser="ngModel" [(ngModel)]="search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="goSearch()" >Search</button>
+      </form>
+      <div class="table-responsive">
+        <app-user-list></app-user-list>
+      </div>
     </div>
   </div>
+  <!--ModalForm-->
+  <app-register (newEvent)="receiveMessage($event)"></app-register>
 </div>
