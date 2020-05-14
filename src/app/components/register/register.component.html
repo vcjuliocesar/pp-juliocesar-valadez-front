@@ -21,7 +21,7 @@
             <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="user.name"
               placeholder="Name" required pattern="[a-zA-ZÀ-Ÿ ]+" />
             <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
-              El nombre no es valido
+              Invlid name
             </small>
           </div>
           <div class="form-group">
@@ -29,7 +29,7 @@
             <input type="tel" class="form-control" name="phone" #phone="ngModel" [(ngModel)]="user.phone"
               placeholder="Phone" required pattern="[0-9]+" />
             <small *ngIf="!phone.valid && phone.touched" class="invalid-feedback d-block">
-              El telefono no es valido
+              Invalid phone
             </small>
           </div>
           <div class="form-group">
@@ -37,7 +37,7 @@
             <input type="number" class="form-control" name="age" #age="ngModel" [(ngModel)]="user.age" min="18"
               max="100" required pattern="[0-9]+" />
             <small *ngIf="!age.valid && age.touched" class="invalid-feedback d-block">
-              El edad no es valido
+              Invalid age
             </small>
           </div>
           <div class="form-group">

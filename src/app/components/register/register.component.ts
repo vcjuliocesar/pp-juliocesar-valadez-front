@@ -25,7 +25,6 @@ export class RegisterComponent implements OnInit {
 
   sendMessage(msg) {
     this.newEvent.emit(msg);
-    console.log(msg);
   }
 
   onSubmit(form) {
