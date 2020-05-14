@@ -1,29 +1,20 @@
 <div class="container">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <button class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#newUser">
-            <span class="text">Add new</span>
-          </button>
-        </li>
-      </ul>
-      <app-borwser></app-borwser>
-    </div>
-  </nav>
   <div class="card mt-4">
-    <div class="card-header">Users</div>
+    <div class="card-header">Form</div>
     <div class="card-body">
-      <app-user-list></app-user-list>
+      <app-register></app-register>
     </div>
   </div>
-  <app-register></app-register>
+
+  <div class="card mt-4">
+    <div class="card-header">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+    <div class="card-body">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
